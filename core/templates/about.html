@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+<html>
+<head>
+{% block title %}
+    About - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<article class="cf ph3 ph5-ns pv5 vh-100 dt w-100 ">
+    <div class="tc-1 mt4 mt5-m mt6-1 ph1 ">
+        <h1 class="flex items-center justify-center"> About Us </h1>
+        <p class="flex items-center justify-center"> Insert "about us" information here </p>
+    </div>
+</article>
+{% endblock content %}
