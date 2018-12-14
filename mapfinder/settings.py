@@ -134,10 +134,10 @@ LEAFLET_CONFIG = {
     #Scale control, can change to metric or imperial
     'SCALE': 'both',
 
-    'MINIMAP': False,
+    # 'MINIMAP': False,
 
     # restore leaflet_map template tags ability to register initialization functions in global scope
-    'NO_GLOBALS' = False,
+    # 'NO_GLOBALS' = False,
 
 
 
@@ -160,4 +160,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
+
 STATIC_URL = '/static/'
+STATICFILES_DIR = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
