@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 
     # my apps
     'core',
+
+    # third party apps
+    'leaflet',
 ]
 
 MIDDLEWARE = [
@@ -78,12 +82,12 @@ WSGI_APPLICATION = 'mapfinder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mapper',
         'USER': 'mapper',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '',
     }
 }
 
@@ -106,6 +110,38 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LEAFLET_CONFIG = {
+    # conf here
+
+    # automatically centers maps, restricts panning, and adds reset view and scale controls. Will need to override for personal maps
+    'SPATIAL_EXTENT': (5.0, 44.0, 7.5, 46),
+
+    # initial map center, default min and max zoom
+    'DEFAULT_CENTER': (6.0, 45.0),
+    'DEFAULT_ZOOM': 16,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 18,
+
+    # can globally add a tiles layer, see https://django-leaflet.readthedocs.io/en/latest/templates.html
+    # Will opt to set default layers in JavaScript code, 
+    # this will also prevent overlays defined in settings from being displayed
+
+    'TILES': [],
+
+    # attribution prefix (ex: Powered by Leaflet), can be empty
+    'ATTRIBUTION_PREFIX': '', 
+
+    #Scale control, can change to metric or imperial
+    'SCALE': 'both',
+
+    'MINIMAP': False,
+
+    # restore leaflet_map template tags ability to register initialization functions in global scope
+    'NO_GLOBALS' = False,
+
+
+
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
