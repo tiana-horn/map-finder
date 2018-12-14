@@ -16,8 +16,8 @@
 
 
 <header>
-</nav> 
-    </div>
+<nav> 
+
         <div class="tc ma0 ph0 pv0">
             <div class="flex items-center justify-center pa0">
                 <h1 class="f1 fw9 black ma0 f1 ttu tracked-tight mt0">Map Maker</h1></div>
@@ -55,6 +55,14 @@
     integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g=="
     crossorigin=""></script>
 
+    <!-- Load Esri Leaflet Geocoder from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.css"
+    integrity="sha512-v5YmWLm8KqAAmg5808pETiccEohtt8rPVMGQ1jA6jqkWVydV5Cuz3nJ9fQ7ittSxvuqsvI9RSGfVoKPaAJZ/AQ=="
+    crossorigin="">
+  <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.js"
+    integrity="sha512-zdT4Pc2tIrc6uoYly2Wp8jh6EPEWaveqqD3sT0lf5yei19BC1WulGuh5CesB0ldBKZieKGD7Qyf/G0jdSe016A=="
+    crossorigin=""></script>
+
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
     <link rel="stylesheet" href="static/css/style.css?v=1.136"  />
 
@@ -67,28 +75,6 @@
 
 </head>
 
-
-
-{% comment %}
-<article class="cf ph3 ph5-ns pv5 vh-100 dt w-100">
-<div class="tc-1 mt4 mt5-m mt6-1 ph1">
-<body>
-
-
-<style>
-  #basemaps-wrapper {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 400;
-    background: white;
-    padding: 10px;
-  }
-  #basemaps {
-    margin-bottom: 5px;
-  }
-</style>
-{% endcomment %}
 
 <style>
   #basemaps-wrapper {
@@ -160,29 +146,21 @@
     var basemap = basemaps.value;
     setBasemap(basemap);
   }
+
+  var searchControl = L.esri.Geocoding.geosearch().addTo(map);
+
+  var results = L.layerGroup().addTo(map);
+
+  searchControl.on('results', function(data){
+    results.clearLayers();
+    for (var i = data.results.length - 1; i >= 0; i--) {
+      results.addLayer(L.marker(data.results[i].latlng));
+    }
+  });
 </script>
 </div>
 </article>
 </body>
-
-  {% comment %}
-<footer class="pa0 mid-gray">
-  <small class="f6 db tc">© 2018 <b class="ttu">Map Maker</b>, All Rights Reserved</small>
-
-  <div class="tc mt3">
-
-    <a href="{% url 'terms' %}" class="f6 dib ph2 link mid-gray dim">Terms of Use</a>
-    <a href="{% url 'privacy' %}" class="f6 dib ph2 link mid-gray dim">Privacy</a>
-    <a class="f6 dib ph2 link mid-gray dim" href="{% url 'home' %}"><span>Home</span></a>
-    {% if user.is_authenticated %}
-       <a class="f6 dib ph2 link mid-gray dim" href="{% url 'auth_logout' %}"><span>Sign Out</span></a>
-       <p class= "dib">  You are logged in as: {{ user.username }}</p> 
-    {% else %}
-        <a class="f6 dib ph2 link mid-gray dim" href="{% url 'auth_login' %}"><span>Sign In</span></a>
-        <a class="f6 dib ph2 link mid-gray dim" href="{% url 'registration_register' %}"><span>Sign Up</span></a></span>
-    {% endif %}
-  </div>
-  {% endcomment %}
 
 </footer>
 
