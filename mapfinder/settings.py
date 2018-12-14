@@ -134,10 +134,10 @@ LEAFLET_CONFIG = {
     #Scale control, can change to metric or imperial
     'SCALE': 'both',
 
-    'MINIMAP': False,
+    # 'MINIMAP': False,
 
     # restore leaflet_map template tags ability to register initialization functions in global scope
-    'NO_GLOBALS' = False,
+    # 'NO_GLOBALS' = False,
 
 
 
