@@ -26,8 +26,8 @@ urlpatterns = [
     path('about/', core_views.about, name='about'),
     # path('accounts/', include('django.contrib.auth.urls')),
     # path('accounts/register', users_views.register, name='register'),
-    # path('mymap/<slug>', users_views.farm_datamap, name='farm_datamap'),
-    # path('accounts/request_map/', users_views.request_map, name='request_map'),
+    path('mymap/<slug>', users_views.farm_datamap, name='farm_datamap'),
+    path('accounts/request_map/', users_views.request_map, name='request_map'),
     path('admin/', admin.site.urls),
     
 
