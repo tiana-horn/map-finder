@@ -19,12 +19,17 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from core import views as core_views 
-from user import views as user_views
+from users import views as users_views
 
 urlpatterns = [
     path('', core_views.index, name='home'),
     path('about/', core_views.about, name='about'),
+    # path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/register', users_views.register, name='register'),
+    # path('mymap/<slug>', users_views.farm_datamap, name='farm_datamap'),
+    # path('accounts/request_map/', users_views.request_map, name='request_map'),
     path('admin/', admin.site.urls),
+    
 
 ]
 

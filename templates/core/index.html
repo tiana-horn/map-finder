@@ -25,7 +25,7 @@
                 <h2 class="f3 fw5 black">Powerful Data To Increase Crop Yields</h2>
             </div>
             <div class="flex items-center justify-center pa0">
-                <a class="f3 link grow ph2 pv2 mb1  pa4 br3 dib white bg-green hover-bg-dark-green black inline-flex items-center" href="{% url 'home' %}">Your Farm</a>
+                <a class="f3 link grow ph2 pv2 mb1  pa4 br3 dib white bg-green hover-bg-dark-green black inline-flex items-center" href="{% url 'request_map' %}">Your Farm</a>
                 <span class="dib v-mid ph3 white mb3">or</span>
                 <a class="f3 link grow ph2 pv2 mb1  pa4 br3 dib white bg-blue hover-bg-dark-blue black inline-flex items-center" href="{% url 'about' %}">Learn More</a>
             </div>
@@ -114,6 +114,13 @@
   var layerLabels;
   layerLabels = L.esri.basemapLayer('ImageryLabels');
       map.addLayer(layerLabels);
+
+// Soil layer
+{% comment %} 
+  L.esri.dynamicMapLayer({
+    url: 'https://services.arcgisonline.com/arcgis/rest/services/Specialty/Soil_Survey_Map/MapServer',
+    opacity: 0.7
+  }).addTo(map); {% endcomment %}
 
   function setBasemap(basemap) {
     if (layer) {
