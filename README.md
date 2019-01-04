@@ -16,8 +16,7 @@ Postgresql
 JavaScript
 Esri
 Leaflet
-Numpy
-Pandas
+
 
 Deployed on Heroku at: 
 
