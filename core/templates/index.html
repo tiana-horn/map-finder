@@ -1,11 +1,6 @@
-{% comment %}
-
-{% load base.html %}
 
 
-{% endcomment %}
-
-{% load staticfiles %}
+{% load static %}
 {% load leaflet_tags %}
 {% leaflet_css %}
 {% leaflet_js %}
@@ -13,9 +8,12 @@
 
 <html>
 <head>
-  <meta charset=utf-8 />
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}"/>
+
+  <meta charset=utf-8/>
   <title>iMap</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
 
     <!-- Load Leaflet from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
@@ -41,6 +39,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
     <link rel="stylesheet" href="static/css/style.css?v=1.137"  />
+
 
 
 <header>

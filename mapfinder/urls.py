@@ -23,16 +23,11 @@ from users import views as users_views
 
 urlpatterns = [
     path('', core_views.index, name='home'),
-    path('about/', core_views.about, name='about'),
-    # path('accounts/', include('django.contrib.auth.urls')),
-    # path('accounts/register', users_views.register, name='register'),
     path('mymap/<slug>', users_views.farm_datamap, name='farm_datamap'),
     path('accounts/request_map/', users_views.request_map, name='request_map'),
+    path('favicon', RedirectView.as_view(url='/static/favicon.ico')),
     path('admin/', admin.site.urls),
     
 
-]
-
-if settings.DEBUG:
-    urlpatterns += static(
+] + static(
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
