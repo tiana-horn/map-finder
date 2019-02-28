@@ -12,15 +12,15 @@ class Farmer(models.Model):
     name = models.CharField("Legal name", max_length=255)
     phone_number = models.CharField("Contact number", max_length=20)
 
-class FarmMap(models.Model):
-    name = models.CharField(max_length=100, blank=False)
-    geom = geomodels.PointField()
-    slug = models.SlugField(default=None, unique=False)
+# class FarmMap(models.Model):
+#     name = models.CharField(max_length=100, blank=False)
+#     geom = geomodels.PointField()
+    # slug = models.SlugField(default=None, unique=False)
 
-    class Meta:
-        ordering = ('name',)
+    # class Meta:
+    #     ordering = ('name',)
 
-        verbose_name_plural = 'cities'
+    #     verbose_name_plural = 'cities'
 
     def __str__(self):
         return self.name

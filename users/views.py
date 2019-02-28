@@ -3,8 +3,8 @@ from django.views.generic import DetailView
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
 from django.http import Http404
-from users.models import FarmMap, Farmer, User
-from users.forms import FarmMapForm
+# from users.models import FarmMap, Farmer, User
+# from users.forms import FarmMapForm
 
 
 
